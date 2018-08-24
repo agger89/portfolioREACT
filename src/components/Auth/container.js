@@ -6,6 +6,7 @@ class Container extends Component {
         action: "login"
     };
     render() {
+        console.log(this.state);
         const { action } = this.state;
         return <Auth action={action} changeAction={this._changeAction} />
     }
