@@ -1,0 +1,91 @@
+.form-component {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  margin-bottom: 25px;
+  .form {
+    display: flex;
+    flex-direction: column;
+    input[type="submit"] {
+      margin-top: 10px;
+    }
+    .text-input {
+      padding: 9px 0 7px 8px;
+      margin-bottom: 5px;
+      border-top: 1px solid #efefef;
+      border-radius: 3px;
+      background-color: $bg-color;
+      font-size: $normal-font-size;
+      font-weight: 400;
+      &:focus {
+        outline: none;
+        border: 1px solid #b2b2b2;
+      }
+    }
+  }
+  .button {
+    @include blueButton();
+    svg {
+      margin-right: 10px;
+    }
+  }
+  .divider {
+    position: relative;
+    margin: 20px 0;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: $dark-grey;
+    text-transform: uppercase;
+    &:before {
+      content: "";
+      position: absolute;
+      top: 6px;
+      left: 0;
+      width: 42%;
+      height: 1px;
+      background-color: $dark-grey;
+      opacity: 0.8;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 0;
+      width: 42%;
+      height: 1px;
+      background-color: $dark-grey;
+      opacity: 0.8;
+    }
+  }
+  .facebookLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    color: #385185;
+    svg {
+      margin-right: 5px
+    }
+  }
+  .forgetLink {
+    font-size: $small-font-size;
+    color: $dark-blue;
+  }
+  .signup-header {
+    margin-bottom: 20px;
+    font-size: 17px;
+    font-weight: 600;
+    color: $dark-grey;
+  }
+  .terms {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 20px;
+    line-height: 20px;
+    color: $dark-grey;
+    span {
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}

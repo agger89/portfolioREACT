@@ -9,9 +9,18 @@
   margin-top: 30px;
   .column {
     width: 40%;
+    @include breakpoint(mobileonly) {
+      &:first-child {
+        display: none;
+      }
+    }
     &:last-child {
-      width: 35%;
+      width: 38%;
       margin-left: 35px;
+      @include breakpoint(mobileonly) {
+        width: 100%;
+        margin: 0;
+      }
     }
     .app-box {
       display: flex;
@@ -32,16 +41,22 @@
       text-align: center;
       padding: 15px;
       @include boxBorder(no);
+      @include breakpoint(mobileonly) {
+        background-color: transparent;
+        border: 0;
+      }
       .change-link {
         color: $light-blue;
         cursor: pointer;
       }
-      p {
+      .text {
         margin: 15px;
       }
     }
     .form-box {
       margin-bottom: 10px;
+      padding: 0 40px;
+      padding-top: 30px;
       img {
         height: 60px;
       }
