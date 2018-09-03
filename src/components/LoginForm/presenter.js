@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import Ionicon from "react-ionicons";
+import FacebookLogin from 'react-facebook-login';
 import formStyles from 'shared/formStyles.scss';
 
 const LoginForm = props => (
@@ -29,10 +29,20 @@ const LoginForm = props => (
             />
         </form>
         <span className={formStyles.divider}>or</span>
-        <span className={formStyles.facebookLink}>
-            <Ionicon icon="logo-facebook" fontSize="20px" color="#385185" />
-            Log in with FaceBook
-        </span>
+        {/*
+            페이스북 로그인
+            1. https://developers.facebook.com/apps 가서 새 앱 추가
+            1. 앱 도메인 입력란에 localhost 등 url 추가 후 변경 내용 저장
+            1. 앱ID 복사해서 appId="여기에 붙여넣기"
+        */}
+        <FacebookLogin
+            appId="455772218254805"
+            autoLoad={true}
+            fields="name,email,picture"
+            cssClass={formStyles.facebookLink}
+            callback={props.handleFacebookLogin}
+            icon="fa-facebook"
+        />
         <span className={formStyles.forgotLink}>Forgot password?</span>
     </div>
 );
@@ -41,7 +51,8 @@ LoginForm.propTypes = {
     usernameValue: PropTypes.string.isRequired,
     passwordValue: PropTypes.string.isRequired,
     handleInputChange: PropTypes.func.isRequired,
-    handleSubmit: PropTypes.func.isRequired
+    handleSubmit: PropTypes.func.isRequired,
+    handleFacebookLogin: PropTypes.func.isRequired
 };
 
 
