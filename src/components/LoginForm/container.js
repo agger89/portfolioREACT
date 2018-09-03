@@ -22,6 +22,7 @@ class Container extends Component {
         this.setState({
            [name]: value
         });
+        console.log(value)
     };
     _handleSubmit = event => {
         event.preventDefault();
