@@ -28,7 +28,29 @@ function facebookLogin(access_token) {
             .then(response => response.json())
             .then(json => {
                 if (json.token) {
-                    localStorage.setItem('jwt', json.token);
+                    dispatch(saveToken(json.token))
+                }
+            })
+            .catch(err => console.log(err))
+    }
+}
+// 백엔드 작업이 안되어있음, 로그인 버튼을 클릭하면 post할 url이 없다고 뜸
+// 프론트 작업만 완료
+function usernameLogin(username, password) {
+    return function(dispatch) {
+        fetch("/rest-auth/login", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                username,
+                password
+            })
+        })
+            .then(response => response.json())
+            .then(json => {
+                if (json.token) {
                     dispatch(saveToken(json.token))
                 }
             })
@@ -54,6 +76,7 @@ function reducer(state = initialState, action) {
 // reducer functions
 function applySetToken(state, action) {
     const { token } = action;
+    localStorage.setItem('jwt', token);
     return {
         ...state,
         isLoggedIn: true,
@@ -63,7 +86,8 @@ function applySetToken(state, action) {
 
 // exports
 const actionCreators = {
-    facebookLogin
+    facebookLogin,
+    usernameLogin
 };
 export { actionCreators };
 
