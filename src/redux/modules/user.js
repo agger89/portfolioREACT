@@ -1,8 +1,15 @@
 // imports
 
 // actions
+const SAVE_TOKEN = "SAVE_TOKEN";
 
 // actions creators
+function saveToken(token) {
+    return {
+        type: SAVE_TOKEN,
+        token
+    }
+}
 
 // API actions
 // 백엔드 작업이 안되어있음, facebook로그인 버튼을 클릭하면 post할 url이 없다고 뜸
@@ -19,25 +26,40 @@ function facebookLogin(access_token) {
             })
         })
             .then(response => response.json())
-            .then(json => console.log(json))
+            .then(json => {
+                if (json.token) {
+                    localStorage.setItem('jwt', json.token);
+                    dispatch(saveToken(json.token))
+                }
+            })
             .catch(err => console.log(err))
     }
 }
 
 // initial state
 const initialState = {
-    isLoggedIn: localStorage.getItem('jwt') || false
+    isLoggedIn: localStorage.getItem('jwt') ? true : false
 };
 
 // reducer
 function reducer(state = initialState, action) {
     switch (action.type) {
+        case SAVE_TOKEN:
+            return applySetToken(state, action);
         default:
             return state;
     }
 }
 
 // reducer functions
+function applySetToken(state, action) {
+    const { token } = action;
+    return {
+        ...state,
+        isLoggedIn: true,
+        token
+    }
+}
 
 // exports
 const actionCreators = {
