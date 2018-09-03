@@ -19,6 +19,7 @@ class Container extends Component {
                 passwordValue={password}
                 handleInputChange={this._handleInputChange}
                 handleSubmit={this._handleSubmit}
+                handleFacebookLogin={this._handleFacebookLogin}
             />
         )
     }
@@ -30,11 +31,14 @@ class Container extends Component {
             // 위처럼 하지 않았다면 하나하나 다 email, name, username 등등을 적어야 했을것
             [name]: value
         });
-    }
+    };
     _handleSubmit = event => {
         event.preventDefault();
         console.log(this.state);
-    }
+    };
+    _handleFacebookLogin = response => {
+        console.log(response);
+    };
 }
 
 

@@ -10,11 +10,11 @@ class Container extends Component {
         const { username, password } = this.state;
         return (
             <LoginForm
+                usernameValue={username}
+                passwordValue={password}
                 handleInputChange={this._handleInputChange}
                 handleSubmit={this._handleSubmit}
                 handleFacebookLogin={this._handleFacebookLogin}
-                usernameValue={username}
-                passwordValue={password}
             />
         );
     }

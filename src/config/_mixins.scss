@@ -46,9 +46,7 @@ $iphone6plus-width: 450px;
 }
 
 @mixin blueButton() {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
   -webkit-appearance: none;
   border-radius: 3px;
   background-color: $light-blue;

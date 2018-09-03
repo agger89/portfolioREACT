@@ -37,11 +37,12 @@ const LoginForm = props => (
         */}
         <FacebookLogin
             appId="455772218254805"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
-            cssClass={formStyles.facebookLink}
             callback={props.handleFacebookLogin}
+            cssClass={formStyles.facebookLink}
             icon="fa-facebook"
+            textButton="Log in with Facebook"
         />
         <span className={formStyles.forgotLink}>Forgot password?</span>
     </div>
