@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import SignupForm from './presenter';
 
 class Container extends Component {
@@ -8,7 +9,10 @@ class Container extends Component {
         username: "",
         password: ""
     };
-
+    // 클래스형태의 컴포넌트 일때는 static 을 붙여서 propTypes 를 지정
+    static propTypes = {
+        facebookLogin: PropTypes.func.isRequired
+    };
     render() {
         const { email, fullname, username, password } = this.state;
         return (
@@ -37,7 +41,8 @@ class Container extends Component {
         console.log(this.state);
     };
     _handleFacebookLogin = response => {
-        console.log(response);
+        const { facebookLogin } = this.props;
+        facebookLogin(response.accessToken);
     };
 }
 

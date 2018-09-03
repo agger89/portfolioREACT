@@ -15,7 +15,7 @@ const SignupForm = props => (
             icon="fa-facebook"
             textbutton="Log in with Facebook"
         />
-        <span className={formStyles.diveder}>or</span>
+        <span className={formStyles.divider}>or</span>
         <form className={formStyles.form} onSubmit={props.handleSubmit}>
             <input
                 type="email"
