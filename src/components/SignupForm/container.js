@@ -5,20 +5,21 @@ import SignupForm from './presenter';
 class Container extends Component {
     state = {
         email: "",
-        fullname: "",
+        name: "",
         username: "",
         password: ""
     };
     // 클래스형태의 컴포넌트 일때는 static 을 붙여서 propTypes 를 지정
     static propTypes = {
-        facebookLogin: PropTypes.func.isRequired
+        facebookLogin: PropTypes.func.isRequired,
+        createAccount: PropTypes.func.isRequired
     };
     render() {
-        const { email, fullname, username, password } = this.state;
+        const { email, name, username, password } = this.state;
         return (
             <SignupForm
                 emailValue={email}
-                fullnameValue={fullname}
+                nameValue={name}
                 usernameValue={username}
                 passwordValue={password}
                 handleInputChange={this._handleInputChange}
@@ -37,14 +38,15 @@ class Container extends Component {
         });
     };
     _handleSubmit = event => {
+        const { email, name, password, username } = this.state;
+        const { createAccount } = this.props;
         event.preventDefault();
-        console.log(this.state);
+        createAccount(username, password, email, name);
     };
     _handleFacebookLogin = response => {
         const { facebookLogin } = this.props;
         facebookLogin(response.accessToken);
     };
 }
-
 
 export default Container;
