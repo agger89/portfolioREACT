@@ -1,9 +1,16 @@
 @import "reset-css/reset.css";
 @import url('https://fonts.googleapis.com/css?family=Roboto:300:400,700');
 body {
-  font-family: Roboto, sans-serif;
   background-color: $bg-color;
-  input {
-    border: 0;
-  }
+  font-family: Roboto, sans-serif;
+  font-size: $normal-font-size;
+}
+* {
+  box-sizing: border-box;
+}
+input {
+  border: 0;
+}
+img {
+  max-width: 100%;
 }
