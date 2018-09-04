@@ -9,6 +9,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         createAccount: (username, password, email, name) => {
             dispatch(userActions.createAccount(username, password, email, name))
+        },
+        clickLogin: () => {
+            dispatch(userActions.clickLogin());
         }
     }
 };

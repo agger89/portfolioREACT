@@ -2,12 +2,19 @@
 
 // actions
 const SAVE_TOKEN = "SAVE_TOKEN";
+const LOGIN_TRUE = "LOGIN_TRUE";
 
 // actions creators
 function saveToken(token) {
     return {
         type: SAVE_TOKEN,
         token
+    }
+}
+
+function loginTrue() {
+    return {
+        type: LOGIN_TRUE,
     }
 }
 
@@ -83,8 +90,15 @@ function createAccount(username, password, email, name) {
     }
 }
 
+function clickLogin() {
+    return function (dispatch) {
+        dispatch(loginTrue())
+    }
+}
+
 // initial state
 const initialState = {
+    // isLoggedIn: localStorage.getItem('jwt') ? true : false
     isLoggedIn: localStorage.getItem('jwt') ? true : false
 };
 
@@ -93,6 +107,8 @@ function reducer(state = initialState, action) {
     switch (action.type) {
         case SAVE_TOKEN:
             return applySetToken(state, action);
+        case LOGIN_TRUE:
+            return setLogin(state);
         default:
             return state;
     }
@@ -109,11 +125,20 @@ function applySetToken(state, action) {
     }
 }
 
+function setLogin(state) {
+    return {
+        ...state,
+        isLoggedIn: true,
+    }
+}
+
+
 // exports
 const actionCreators = {
     facebookLogin,
     usernameLogin,
-    createAccount
+    createAccount,
+    clickLogin
 };
 export { actionCreators };
 

@@ -12,7 +12,8 @@ class Container extends Component {
     // 클래스형태의 컴포넌트 일때는 static 을 붙여서 propTypes 를 지정
     static propTypes = {
         facebookLogin: PropTypes.func.isRequired,
-        createAccount: PropTypes.func.isRequired
+        createAccount: PropTypes.func.isRequired,
+        clickLogin: PropTypes.func.isRequired
     };
     render() {
         const { email, name, username, password } = this.state;
@@ -38,14 +39,18 @@ class Container extends Component {
         });
     };
     _handleSubmit = event => {
-        const { email, name, password, username } = this.state;
-        const { createAccount } = this.props;
-        event.preventDefault();
-        createAccount(username, password, email, name);
+        // event.preventDefault();
+        // const { email, name, password, username } = this.state;
+        // const { createAccount } = this.props;
+        // createAccount(username, password, email, name);
+        const { clickLogin } = this.props;
+        clickLogin();
     };
     _handleFacebookLogin = response => {
-        const { facebookLogin } = this.props;
-        facebookLogin(response.accessToken);
+        // const { facebookLogin } = this.props;
+        // facebookLogin(response.accessToken);
+        const { clickLogin } = this.props;
+        clickLogin();
     };
 }
 

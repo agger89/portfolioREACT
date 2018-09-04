@@ -11,6 +11,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         usernameLogin: (email, password) => {
             dispatch(userActions.usernameLogin(email, password));
+        },
+        clickLogin: () => {
+            dispatch(userActions.clickLogin());
         }
     }
 };
