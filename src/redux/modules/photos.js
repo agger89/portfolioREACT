@@ -25,7 +25,7 @@ function getFeed() {
                 if (response.status === 401) {
                     dispatch(userActions.logout());
                 }
-                return response.json();
+                return response.json.toString();
             })
             .then(json => dispatch(setFeed(json)))
             .catch(err => console.log(err))

@@ -17,6 +17,8 @@ class Container extends Component {
             })
         }
     }
+    // 컴포넌트가 prop 을 새로 받았을 때 실행된다
+    // prop 에 따라 state 를 업데이트 해야 할 때 사용하면 유용하다
     componentWillReceiveProps = nextProps => {
         if (nextProps.feed) {
             this.setState({
