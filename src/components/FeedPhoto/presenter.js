@@ -1,9 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
+import PhotoActions from "components/PhotoActions";
 
 const FeedPhoto = (props, context) => {
-    return <div className={styles.feedPhoto}>"hello"</div>;
+    return (
+        <div className={styles.feedPhoto}>
+            <header>
+                <img
+                    src={require("images/profilePhoto.jpg") || require("images/noPhoto.jpg")}
+                    alt="Anthony"
+                />
+                <div>
+                    <span>Anthony</span>
+                    <span>NewYork</span>
+                </div>
+            </header>
+            <img
+                src={require("images/newYork.jpg")}
+                alt="newYork"
+            />
+            <div>
+                <PhotoActions number={props.like_count} />
+            </div>
+        </div>
+    );
 };
 
 // isRequired 반드시 전달되어야하는 프로퍼티라면
