@@ -9,22 +9,23 @@ import CommentBox from "components/CommentBox";
 const FeedPhoto = (props, context) => {
     return (
         <div className={styles.feedPhoto}>
-            <header>
+            <header className={styles.header}>
                 {/* 데이터 작업하면 아래 문자열들 데이터로 불러오자 #3-50 */}
                 <img
+                    className={styles.image}
                     src={require("images/profilePhoto.jpg") || require("images/noPhoto.jpg")}
                     alt="Anthony"
                 />
-                <div>
-                    <span>Anthony</span>
-                    <span>NewYork</span>
+                <div className={styles.headerColumn}>
+                    <span className={styles.creator}>Anthony</span>
+                    <span className={styles.location}>NewYork</span>
                 </div>
             </header>
             <img
                 src={require("images/newYork.jpg")}
                 alt="newYork"
             />
-            <div>
+            <div className={styles.meta}>
                 <PhotoActions number={5} />
                 <PhotoComments
                     message="nice picccc"
