@@ -4,6 +4,7 @@
 const SAVE_TOKEN = "SAVE_TOKEN";
 const LOGIN = "LOGIN";
 const LOGOUT = "LOGOUT";
+const SET_USER_LIST = "SET_USER_LIST";
 
 // actions creators
 function saveToken(token) {
@@ -22,6 +23,13 @@ function login() {
 function logout() {
     return {
         type: LOGOUT
+    }
+}
+
+function setUserList(userList) {
+    return {
+        type: SET_USER_LIST,
+        userList
     }
 }
 
@@ -97,6 +105,26 @@ function createAccount(username, password, email, name) {
     }
 }
 
+function getPhotoLikes(photoId) {
+    return (dispatch, getState) => {
+        const { user: { token } } = getState();
+        fetch(`/images/${photoId}/likes/`, {
+            headers: {
+                Autorization: `JWT ${token}`
+            }
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    dispatch(logout());
+                }
+                return response.json();
+            })
+            .then(json => {
+                dispatch(setUserList(json))
+            })
+    }
+}
+
 function clickLogin() {
     return function (dispatch) {
         dispatch(login())
@@ -118,6 +146,8 @@ function reducer(state = initialState, action) {
             return applyLogin(state, action);
         case LOGOUT:
             return applyLogout(state, action);
+        case SET_USER_LIST:
+            return applySetUserList(state, action);
         default:
             return state;
     }
@@ -147,6 +177,13 @@ function applyLogout(state, action) {
     }
 }
 
+function applySetUserList(state, action) {
+    const { userList } = action;
+    return {
+        ...state,
+        userList
+    }
+}
 
 // exports
 const actionCreators = {
@@ -154,7 +191,8 @@ const actionCreators = {
     usernameLogin,
     createAccount,
     clickLogin,
-    logout
+    logout,
+    getPhotoLikes
 };
 export { actionCreators };
 
