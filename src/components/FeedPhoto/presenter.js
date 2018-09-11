@@ -35,8 +35,8 @@ const FeedPhoto = (props, context) => {
                     message="nice picccc"
                     creator="James"
                 />
-                <TimeStamp time="1day ago"/>
-                <CommentBox />
+                <TimeStamp time="1day ago" />
+                <CommentBox photoId={props.id} />
             </div>
         </div>
     );
