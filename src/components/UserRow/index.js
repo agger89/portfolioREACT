@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     };
 };
 
-export default connect(null, mapDispatchToProps())(Container);
+export default connect(null, mapDispatchToProps)(Container);
