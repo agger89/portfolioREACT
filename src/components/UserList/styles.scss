@@ -7,7 +7,7 @@
   height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   .box {
     @include boxBorder(no);
     width: 100%;
