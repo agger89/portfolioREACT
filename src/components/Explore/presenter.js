@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
-import UserRow from "components/UserRow";
+import UserDisplay from "components/UserDisplay";
 
 const Explore = props => {
     if(props.loading) {
@@ -23,7 +23,7 @@ const RenderExplore = props => (
         {/* 데이터없어서 map 함수 에러 */}
         {/*{props.userList.map(user => <UserRow big={true} user={user} key={user.id} />)}*/}
         {/* 임시로 대체 */}
-        <UserRow />
+        <UserDisplay />
     </div>
 );
 
