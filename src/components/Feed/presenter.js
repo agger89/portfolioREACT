@@ -21,9 +21,9 @@ const LoadingFeed = props => (
 const RenderFeed = props => (
     <div className={styles.feed}>
         {/* 데이터없어서 map 함수 에러 */}
-        {/*{props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}*/}
+        {props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}
         {/* 임시로 대체 */}
-        <FeedPhoto />
+        {/*<FeedPhoto />*/}
     </div>
 );
 

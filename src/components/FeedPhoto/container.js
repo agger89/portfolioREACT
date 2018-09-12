@@ -5,6 +5,7 @@ class Container extends Component {
     state = {
         seeingLikes: false
     };
+
     render() {
         return (
             <FeedPhoto

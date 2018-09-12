@@ -38,21 +38,32 @@ function addComment(photoId, comment) {
 }
 
 // api actions
+
+// 원본 getFeed
+// function getFeed() {
+//     return (dispatch, getState) => {
+//         const { user: { token } } = getState();
+//         fetch("/images/", {
+//             headers: {
+//                 Authorization: `JWT ${token}`
+//             }
+//         })
+//         .then(response => {
+//             if (response.status === 401) {
+//                 dispatch(userActions.logout());
+//             }
+//             return response.json.toString();
+//         })
+//         .then(json => dispatch(setFeed(json)))
+//         .catch(err => console.log(err))
+//     };
+// }
+
 function getFeed() {
     return (dispatch, getState) => {
-        const { user: { token } } = getState();
-        fetch("/images/", {
-            headers: {
-                Authorization: `JWT ${token}`
-            }
-        })
-            .then(response => {
-                if (response.status === 401) {
-                    dispatch(userActions.logout());
-                }
-                return response.json.toString();
-            })
-            .then(json => dispatch(setFeed(json)))
+        fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+            .then(response => response.json())
+            .then(json => dispatch(setFeed(json.data.movies)))
             .catch(err => console.log(err))
     };
 }
