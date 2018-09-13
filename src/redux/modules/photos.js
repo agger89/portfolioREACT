@@ -58,7 +58,6 @@ function addComment(photoId, comment) {
 //         .catch(err => console.log(err))
 //     };
 // }
-
 function getFeed() {
     return (dispatch, getState) => {
         fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
@@ -68,41 +67,53 @@ function getFeed() {
     };
 }
 
+// 원본 likePhoto
+// function likePhoto(photoId) {
+//     return (dispatch, getState) => {
+//         dispatch(doLikePhoto(photoId));
+//         const { user: { token } } = getState();
+//         fetch(`/images/${photoId}/likes/`, {
+//             method: "POST",
+//             headers: {
+//                 Authorization: `JWT ${token}`
+//             }
+//         }).then(response => {
+//             if (response.status === 401) {
+//                 dispatch(userActions.logout());
+//             } else if (!response.ok) {
+//                 dispatch(doUnlikePhoto(photoId));
+//             }
+//         })
+//     }
+// }
 function likePhoto(photoId) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(doLikePhoto(photoId));
-        const { user: { token } } = getState();
-        fetch(`/images/${photoId}/likes/`, {
-            method: "POST",
-            headers: {
-                Authorization: `JWT ${token}`
-            }
-        }).then(response => {
-            if (response.status === 401) {
-                dispatch(userActions.logout());
-            } else if (!response.ok) {
-                dispatch(doUnlikePhoto(photoId));
-            }
-        })
     }
 }
 
+// 원본 likePhoto
+// function unlikePhoto(photoId) {
+//     return (dispatch, getState) => {
+//         dispatch(doUnlikePhoto(photoId));
+//         const { user: { token } } = getState();
+//         fetch(`/images/${photoId}/unlikes/`, {
+//             method: "DELETE",
+//             headers: {
+//                 Authorization: `JWT ${token}`
+//             }
+//         }).then(response => {
+//             if (response.status === 401) {
+//                 dispatch(userActions.logout());
+//             } else if (!response.ok) {
+//                 dispatch(doLikePhoto(photoId));
+//             }
+//         })
+//     }
+// }
 function unlikePhoto(photoId) {
-    return (dispatch, getState) => {
+    return (dispatch) => {
         dispatch(doUnlikePhoto(photoId));
-        const { user: { token } } = getState();
-        fetch(`/images/${photoId}/unlikes/`, {
-            method: "DELETE",
-            headers: {
-                Authorization: `JWT ${token}`
-            }
-        }).then(response => {
-            if (response.status === 401) {
-                dispatch(userActions.logout());
-            } else if (!response.ok) {
-                dispatch(doLikePhoto(photoId));
-            }
-        })
     }
 }
 
@@ -132,8 +143,7 @@ function commentPhoto(photoId, message) {
 }
 
 // initial state
-const initialState = {
-};
+const initialState = {};
 
 // reducer
 function reducer(state = initialState, action) {
@@ -163,37 +173,24 @@ function applySetFeed(state, action) {
 function applyLikePhoto(state, action) {
     const { photoId } = action;
     const { feed } = state;
-    {/* 백엔드 없어서 map 작동 안함 */}
-    // const updateFeed = feed.map(photo => {
-    //     if (photo.id === photoId) {
-    //         return { ...photo, is_liked: true, like_count: photo.like_count + 1}
-    //     }
-    //     return photo;
-    // });
-    const updateFeed = feed => {
-        if (feed.id === photoId) {
-            return { ...feed, is_liked: true, like_count: feed.like_count + 1}
+    const updateFeed = feed.map(photo => {
+        if (photo.id === photoId) {
+            return { ...photo, is_liked: true, rating: photo.rating + 1}
         }
-        return feed;
-    };
+        return photo;
+    });
     return { ...state, feed: updateFeed };
 }
 
 function applyUnlikePhoto(state, action) {
     const { photoId } = action;
     const { feed } = state;
-    // const updateFeed = feed.map(photo => {
-    //     if (photo.id === photoId) {
-    //         return { ...photo, is_liked: true, like_count: photo.like_count - 1}
-    //     }
-    //     return photo;
-    // });
-    const updateFeed = feed => {
-        if (feed.id === photoId) {
-            return { ...feed, is_liked: false, like_count: feed.like_count - 1}
+    const updateFeed = feed.map(photo => {
+        if (photo.id === photoId) {
+            return { ...photo, is_liked: false, rating: photo.rating - 1}
         }
-        return feed;
-    };
+        return photo;
+    });
     return { ...state, feed: updateFeed };
 }
 

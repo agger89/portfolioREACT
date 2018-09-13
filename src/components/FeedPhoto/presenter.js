@@ -31,7 +31,7 @@ const FeedPhoto = (props, context) => {
             />
             <div className={styles.meta}>
                 <PhotoActions
-                    number={5}
+                    number={props.rating}
                     isLiked={props.is_liked}
                     photoId={props.id}
                     openLikes={props.openLikes}
@@ -50,7 +50,7 @@ const FeedPhoto = (props, context) => {
     );
 };
 
-// isRequired 반드시 전달되어야하는 프로퍼티라면
+// 반드시 전달되어야하는 프로퍼티라면 isRequired
 
 // 원본 FeedPhoto.propTypes
 // FeedPhoto.propTypes = {
@@ -91,7 +91,8 @@ FeedPhoto.propTypes = {
     small_cover_image: PropTypes.string,
     large_cover_image: PropTypes.string,
     synopsis: PropTypes.string,
-    year: PropTypes.string.isRequired
+    year: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired
 };
 
 FeedPhoto.contextTypes = {
