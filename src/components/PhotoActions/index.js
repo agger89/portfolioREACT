@@ -3,9 +3,7 @@ import Container from "./container";
 import { actionCreators as photoActions } from "redux/modules/photos";
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    console.log(ownProps);
     return {
-        // 원본 handleHeartClick
         handleHeartClick: () => {
             if (ownProps.isLiked) {
                 dispatch(photoActions.unlikePhoto(ownProps.photoId));

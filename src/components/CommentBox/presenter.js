@@ -11,6 +11,8 @@ const CommentBox = (props, context) => (
             value={props.comment}
             onChange={props.handleInputChange}
             onKeyPress={props.handleKeyPress}
+            // 원래 input이나 textarea에는 이렇게 ref={props,innerRef} 사용
+            inputRef={props.innerRef}
         />
     </form>
 );
@@ -23,7 +25,8 @@ CommentBox.propTypes = {
     handleInputChange: PropTypes.func.isRequired,
     handleKeyPress: PropTypes.func.isRequired,
     comment: PropTypes.string.isRequired,
-    photoId: PropTypes.number.isRequired
+    photoId: PropTypes.number.isRequired,
+    innerRef: PropTypes.func.isRequired
 };
 
 export default CommentBox;

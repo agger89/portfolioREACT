@@ -13,7 +13,7 @@ const PhotoActions = (props, context) => (
                     (<Ionicon icon="ios-heart-outline" fontSize="28px" color="black"/>)
                 }
             </span>
-            <span className={styles.icon}>
+            <span className={styles.icon} onClick={props.focusInput}>
                 <Ionicon icon="ios-text-outline" fontSize="28px" color="black" />
             </span>
         </div>
@@ -30,8 +30,10 @@ PhotoActions.protoTypes = {
     isLiked: PropTypes.bool.isRequired,
     photoId: PropTypes.number.isRequired,
     handleHeartClick: PropTypes.func.isRequired,
+    handleFocusComment: PropTypes.func.isRequired,
     openLikes: PropTypes.func.isRequired,
-    likePhoto: PropTypes.func.isRequired
+    likePhoto: PropTypes.func.isRequired,
+    focusInput: PropTypes.func.isRequired,
 };
 
 PhotoActions.contextTypes = {

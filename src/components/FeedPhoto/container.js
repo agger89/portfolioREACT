@@ -5,7 +5,6 @@ class Container extends Component {
     state = {
         seeingLikes: false
     };
-
     render() {
         return (
             <FeedPhoto
@@ -13,6 +12,8 @@ class Container extends Component {
                 {...this.state}
                 openLikes={this._openLikes}
                 closeLikes={this._closeLikes}
+                focusInput={this._focusInput}
+                innerRef={ref => this.textArea = ref}
             />
         )
     }
@@ -27,6 +28,9 @@ class Container extends Component {
         this.setState({
             seeingLikes: false
         })
+    };
+    _focusInput = () => {
+        this.textArea.focus()
     }
 }
 

@@ -34,7 +34,7 @@ class Container extends Component {
                 comment: ""
             })
         }
-    }
+    };
 }
 
 export default Container;

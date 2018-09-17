@@ -7,7 +7,6 @@ import TimeStamp from "components/TimeStamp";
 import CommentBox from "components/CommentBox";
 import UserList from "components/UserList";
 
-
 const FeedPhoto = (props, context) => {
     return (
         <div className={styles.feedPhoto}>
@@ -35,13 +34,17 @@ const FeedPhoto = (props, context) => {
                     isLiked={props.is_liked}
                     photoId={props.id}
                     openLikes={props.openLikes}
+                    focusInput={props.focusInput}
                 />
                 <PhotoComments
-                    creator={props.title}
-                    message={props.synopsis}
+                    title={props.title}
+                    genres={props.genres}
                 />
                 <TimeStamp time={props.year} />
-                <CommentBox photoId={props.id} />
+                <CommentBox
+                    photoId={props.id}
+                    innerRef={props.innerRef}
+                />
             </div>
             {props.seeingLikes && (
                 <UserList title={context.t("Likes")} closeLikes={props.closeLikes} />
@@ -90,9 +93,8 @@ FeedPhoto.propTypes = {
     genres: PropTypes.array.isRequired,
     small_cover_image: PropTypes.string,
     large_cover_image: PropTypes.string,
-    synopsis: PropTypes.string,
     year: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired
+    rating: PropTypes.number.isRequired,
 };
 
 FeedPhoto.contextTypes = {

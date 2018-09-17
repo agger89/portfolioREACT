@@ -37,6 +37,7 @@ function addComment(photoId, comment) {
     }
 }
 
+
 // api actions
 
 // 원본 getFeed
@@ -64,6 +65,7 @@ function getFeed() {
             .then(response => response.json())
             .then(json => dispatch(setFeed(json.data.movies)))
             .catch(err => console.log(err))
+
     };
 }
 
@@ -116,29 +118,34 @@ function unlikePhoto(photoId) {
         dispatch(doUnlikePhoto(photoId));
     }
 }
-
+// 원본 commentPhoto
+// function commentPhoto(photoId, message) {
+//     return (dispatch, getState) => {
+//         const { user: { token } } = getState();
+//         fetch(`/images/${photoId}/comments/`, {
+//             method: "POST",
+//             headers: {
+//                 Authorization: `JWT ${token}`,
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                 message
+//             })
+//         }).then(response => {
+//             if (response.status === 401) {
+//                 dispatch(userActions.logout());
+//             }
+//             return response.json()
+//         }).then(json => {
+//             if(json.message) {
+//                 dispatch(addComment(photoId, json));
+//             }
+//         });
+//     };
+// }
 function commentPhoto(photoId, message) {
     return (dispatch, getState) => {
-        const { user: { token } } = getState();
-        fetch(`/images/${photoId}/comments/`, {
-            method: "POST",
-            headers: {
-                Authorization: `JWT ${token}`,
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message
-            })
-        }).then(response => {
-            if (response.status === 401) {
-                dispatch(userActions.logout());
-            }
-            return response.json()
-        }).then(json => {
-            if(json.message) {
-                dispatch(addComment(photoId, json));
-            }
-        });
+        dispatch(addComment(photoId, message));
     };
 }
 
@@ -165,8 +172,8 @@ function reducer(state = initialState, action) {
 function applySetFeed(state, action) {
     const { feed } = action;
     return {
-     ...state,
-     feed
+         ...state,
+         feed
     }
 }
 
@@ -194,27 +201,33 @@ function applyUnlikePhoto(state, action) {
     return { ...state, feed: updateFeed };
 }
 
+// 원본 applyAddCooment
+// function applyAddComment(state, action) {
+//     const { photoId, comment } = action;
+//     const { feed } = state;
+//     const updateFeed = feed.map(photo => {
+//         if (photo.id === photoId) {
+//             return {
+//                  ...photo,
+//                  comments: [...photo.comments, comment]
+//              };
+//         }
+//         return photo;
+//     });
+//     return { ...state, feed: updateFeed };
+// }
 function applyAddComment(state, action) {
     const { photoId, comment } = action;
     const { feed } = state;
-    // const updateFeed = feed.map(photo => {
-    //     if (photo.id === photoId) {
-    //         return {
-    //              ...photo,
-    //              comments: [...photo.comments, comment]
-    //          };
-    //     }
-    //     return photo;
-    // });
-    const updateFeed = feed => {
-        if (feed.id === photoId) {
+    const updateFeed = feed.map(photo => {
+        if (photo.id === photoId) {
             return {
-                 ...feed,
-                 comments: [...feed.comments, comment]
-             };
+                 ...photo,
+                 genres: [ ...photo.genres, comment ]
+            };
         }
-        return feed;
-    };
+        return photo;
+    });
     return { ...state, feed: updateFeed };
 }
 
