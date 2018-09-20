@@ -1,37 +1,51 @@
-.container {
-  width: 30%;
-  height: 220px;
-  margin-bottom: 50px;
+.container-wrap {
+  width: 33.333%;
   overflow: hidden;
   position: relative;
-  .photo {
-    min-height: 100%;
-    max-width: 100%;
-  }
-  &:hover .overlay {
-    opacity: 1;
-  }
-  .overlay {
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    .data {
-      color: white;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      &:first-child {
-        margin-right: 10px;
+  .container {
+    padding-right: 28px;
+    padding-bottom: 28px;
+    @include breakpoint("phone-landscape") {
+      padding-right: 3px;
+      padding-bottom: 3px;
+    }
+    .photo {
+      min-height: 100%;
+      max-width: 100%;
+      padding-top: 90%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+    }
+    &:hover .overlay {
+      opacity: 1;
+    }
+    .overlay {
+      top: 0;
+      left: 0;
+      width: calc(100% - 28px);
+      height: calc(100% - 28px);
+      @include breakpoint("phone-landscape") {
+        width: calc(100% - 3px);
+        height: calc(100% - 3px);
       }
-      svg {
-        margin-right: 5px;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      .data {
+        color: white;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        &:first-child {
+          margin-right: 10px;
+        }
+        svg {
+          margin-right: 5px;
+        }
       }
     }
   }

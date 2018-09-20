@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./styles.scss";
 import Loading from "components/Loading";
 import UserDisplay from "components/UserDisplay";
+import PhotoDisplay from "components/PhotoDisplay";
 
 const Explore = props => {
     if(props.loading) {
@@ -20,10 +21,18 @@ const LoadingExplore = props => (
 
 const RenderExplore = props => (
     <div className={styles.explore}>
-        {/* 데이터없어서 map 함수 에러 */}
-        {/*{props.userList.map(user => <UserRow big={true} user={user} key={user.id} />)}*/}
-        {/* 임시로 대체 */}
-        <UserDisplay />
+        <div className={styles.userList}>
+            {props.userList.map(user =>
+                user.rating === 8 &&
+                <UserDisplay big={true} user={user} key={user.id} />
+            )}
+        </div>
+        <div className={styles.userPhoto}>
+            {props.userList.map(photo =>
+                <PhotoDisplay photo={photo}/>
+            )}
+
+        </div>
     </div>
 );
 

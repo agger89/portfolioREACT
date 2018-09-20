@@ -4,22 +4,24 @@ import styles from "./styles.scss";
 
 const UserDisplay = (props, context) => (
     <div className={props.horizontal ? styles.horizontal : styles.vertical}>
-        <div className={styles.column}>
-            <img
-                src={props.user.profile_image || require("images/noPhoto.jpg")}
-                alt={props.user.username}
-                className={props.big ? styles.bigAvatar : styles.avatar}
-            />
-            <div className={styles.user}>
-                <span className={styles.username}>{props.user.username}</span>
-                <span className={styles.name}>{props.user.name}</span>
+        <div className={styles.wrap}>
+            <div className={styles.column}>
+                <div
+                    style={{ backgroundImage: `url(${props.user.medium_cover_image || require("images/noPhoto.jpg")})` }}
+                    alt={props.user.title}
+                    className={props.big ? styles.bigAvatar : styles.avatar}
+                />
+                <div className={styles.user}>
+                    <span className={styles.username}>{props.user.title}</span>
+                    <span className={styles.name}>{props.user.title}</span>
+                </div>
             </div>
+            <span className={styles.column}>
+                 <button className={styles.button} onClick={props.handleClick}>
+                     {props.user.following ? context.t("Unfollow") : context.t("Follow")}
+                 </button>`
+            </span>
         </div>
-        <span className={styles.column}>
-      <button className={styles.button} onClick={props.handleClick}>
-        {props.user.following ? context.t("Unfollow") : context.t("Follow")}
-      </button>
-    </span>
     </div>
 );
 

@@ -23,7 +23,7 @@ $iphone6plus-width: 450px;
       @content;
     }
   } @else if $breakpoint == "phone-landscape" {
-    @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width}) and (orientation: landscape) {
+    @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width}) {
       @content;
     }
   } @else if $breakpoint == "desktop-xl" {

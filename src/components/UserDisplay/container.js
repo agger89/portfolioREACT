@@ -1,6 +1,6 @@
 import React from "react";
-import UserRow from "./presenter";
+import UserDisplay from "./presenter";
 
-const Container = props => <UserRow {...props} />;
+const Container = props => <UserDisplay {...props} />;
 
 export default Container;

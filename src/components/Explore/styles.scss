@@ -1,11 +1,25 @@
 .explore {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
-  max-width: $max-card-width;
+  max-width: $max-page-width;
   min-height: 500px;
   margin: 0 auto;
-  background-color: white;
-  @include boxBorder(yes);
+  .user-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -28px;
+    margin-bottom: 60px;
+    @include breakpoint("phone-landscape") {
+        display: none;
+    }
+  }
+  .user-photo {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -28px;
+    margin-bottom: -28px;
+    @include breakpoint("phone-landscape") {
+      margin-right: -9px;
+      margin-bottom: -9px;
+    }
+  }
 }

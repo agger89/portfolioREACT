@@ -9,8 +9,10 @@ import Feed from "components/Feed";
 import Explore from "components/Explore";
 
 const App = props => [
-    props.isLoggedIn ? <Navigation key={1} /> : null,
-    props.isLoggedIn ? <PrivateRoutes key={2} /> : <PublicRoutes key={2} />,
+    // props.isLoggedIn ? <Navigation key={1} /> : null,
+    // props.isLoggedIn ? <PrivateRoutes key={2} /> : <PublicRoutes key={2} />,
+    <Navigation key={1} />,
+    <PrivateRoutes key={2} />,
     <Footer key={3} />
 ];
 

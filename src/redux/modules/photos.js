@@ -65,7 +65,6 @@ function getFeed() {
             .then(response => response.json())
             .then(json => dispatch(setFeed(json.data.movies)))
             .catch(err => console.log(err))
-
     };
 }
 
