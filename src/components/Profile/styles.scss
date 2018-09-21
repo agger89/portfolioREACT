@@ -1,0 +1,132 @@
+.profile {
+  display: flex;
+  justify-content: center;
+  background-color: #fafafa;
+  .inner {
+    position: relative;
+    max-width: $max-page-width;
+    width: 100%;
+    @include breakpoint("phone-landscape") {
+      position: static;
+    }
+    .top-column {
+      display: flex;
+      align-items: end;
+      margin: 30px 16px 46px;
+      @include breakpoint("phone-landscape") {
+        align-items: center;
+      }
+      .user-image {
+        margin-right: 60px;
+        @include breakpoint("phone-landscape") {
+          margin-right: 28px;
+        }
+        .image {
+          width: 152px;
+          height: 152px;
+          border: 1px solid #dbdbdb;
+          border-radius: 50%;
+          background-size: cover;
+          background-position: 50%;
+          background-repeat: no-repeat;
+          @include breakpoint("phone-landscape") {
+            width: 77px;
+            height: 77px;
+          }
+        }
+      }
+      .userInfoWrap {
+        position: relative;
+        display: flex;
+        width: auto;
+        @include breakpoint("phone-landscape") {
+          width: 100%;
+          flex-direction: column;
+        }
+        .user-info {
+          display: flex;
+          align-items: center;
+          margin-bottom: 0;
+          @include breakpoint("phone-landscape") {
+            margin-bottom: 12px;
+          }
+          .user-name {
+            margin-right: 5px;
+            font-size: 32px;
+            @include breakpoint("phone-landscape") {
+              font-size: 26px;
+            }
+          }
+          svg {
+            position: absolute;
+            right: -42px;
+            width: 34px;
+            height: 34px;
+            @include breakpoint("phone-landscape") {
+              position: inherit;
+              right: 0;
+              width: auto;
+              height: auto;
+            }
+          }
+        }
+        .edit-btn {
+          padding: 5px 9px;
+          margin-left: 15px;
+          border: 1px solid #dbdbdb;
+          background-color: transparent;
+          font-weight: 600;
+          color: #262626;
+          cursor: pointer;
+          @include breakpoint("phone-landscape") {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+    .bottomColumn {
+      display: inline-block;
+      position: absolute;
+      top: 70px;
+      left: 228px;
+      padding: 12px 0;
+      border: 0;
+      @include breakpoint("phone-landscape") {
+        position: static;
+        display: inherit;
+        border-top: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+      }
+      .user-info {
+        display: flex;
+        font-size: 16px;
+        @include breakpoint("phone-landscape") {
+          font-size: 14px;
+        }
+        .count-wrap {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 33.333%;
+          margin-right: 40px;
+          @include breakpoint("phone-landscape") {
+            flex-direction: column;
+            margin-right: 0;
+          }
+          .title {
+            margin-right: 5px;
+            margin-bottom: 0;
+            color: #000;
+            @include breakpoint("phone-landscape") {
+              margin-bottom: 3px;
+              color: #999;
+            }
+          }
+          .count {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}

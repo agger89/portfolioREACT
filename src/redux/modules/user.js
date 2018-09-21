@@ -149,43 +149,57 @@ function getPhotoLikes(photoId) {
     }
 }
 
+// 원본 followUser
+// function followUser(userId) {
+//     return (dispatch, getState) => {
+//         dispatch(setFollowUser(userId));
+//         const { user: { token } } = getState();
+//         fetch(`/users/${userId}/follow/`, {
+//             method: "POST",
+//             headers: {
+//                 Authorization: `JWT ${token}`,
+//                 "Content-Type": "application/json"
+//             }
+//         }).then(response => {
+//             if (response.status === 401) {
+//                 dispatch(logout());
+//             } else if (!response.ok) {
+//                 dispatch(setUnfollowUser(userId));
+//             }
+//         });
+//     };
+// }
+
 function followUser(userId) {
     return (dispatch, getState) => {
         dispatch(setFollowUser(userId));
-        const { user: { token } } = getState();
-        fetch(`/users/${userId}/follow/`, {
-            method: "POST",
-            headers: {
-                Authorization: `JWT ${token}`,
-                "Content-Type": "application/json"
-            }
-        }).then(response => {
-            if (response.status === 401) {
-                dispatch(logout());
-            } else if (!response.ok) {
-                dispatch(setUnfollowUser(userId));
-            }
-        });
     };
 }
+
+// 원본 unfollowUser
+// function unfollowUser(userId) {
+//     return (dispatch, getState) => {
+//         dispatch(setUnfollowUser(userId));
+//         const { user: { token } } = getState();
+//         fetch(`/users/${userId}/unfollow/`, {
+//             method: "POST",
+//             headers: {
+//                 Authorization: `JWT ${token}`,
+//                 "Content-Type": "application/json"
+//             }
+//         }).then(response => {
+//             if (response.status === 401) {
+//                 dispatch(logout());
+//             } else if (!response.ok) {
+//                 dispatch(setFollowUser(userId));
+//             }
+//         });
+//     };
+// }
 
 function unfollowUser(userId) {
     return (dispatch, getState) => {
         dispatch(setUnfollowUser(userId));
-        const { user: { token } } = getState();
-        fetch(`/users/${userId}/unfollow/`, {
-            method: "POST",
-            headers: {
-                Authorization: `JWT ${token}`,
-                "Content-Type": "application/json"
-            }
-        }).then(response => {
-            if (response.status === 401) {
-                dispatch(logout());
-            } else if (!response.ok) {
-                dispatch(setFollowUser(userId));
-            }
-        });
     };
 }
 
