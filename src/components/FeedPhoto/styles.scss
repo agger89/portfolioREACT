@@ -24,6 +24,11 @@
       background-repeat: no-repeat;
       border-radius: 50%;
       margin-right: 15px;
+      a {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
     .header-column {
       display: flex;

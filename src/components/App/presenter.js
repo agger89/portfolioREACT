@@ -25,7 +25,7 @@ const PrivateRoutes = props => (
     <Switch>
         <Route exact path="/" component={Feed} />
         <Route exact path="/explore" component={Explore} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:paramsId" component={Profile} />
         <Route path="/search/:searchTerm" render={() => "search"} />
     </Switch>
 );

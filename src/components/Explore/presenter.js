@@ -31,7 +31,6 @@ const RenderExplore = props => (
             {props.userList.map(photo =>
                 <PhotoDisplay photo={photo}/>
             )}
-
         </div>
     </div>
 );

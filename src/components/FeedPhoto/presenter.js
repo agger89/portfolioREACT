@@ -6,6 +6,7 @@ import PhotoComments from "components/PhotoComments";
 import TimeStamp from "components/TimeStamp";
 import CommentBox from "components/CommentBox";
 import UserList from "components/UserList";
+import { Link } from "react-router-dom";
 
 const FeedPhoto = (props, context) => {
     return (
@@ -14,7 +15,9 @@ const FeedPhoto = (props, context) => {
                 <div
                     className={styles.image}
                     style={{ backgroundImage: `url(${props.small_cover_image})` }}
-                />
+                >
+                    <Link to={`/profile/${props.id}`} params={{paramsId: props.id}} />
+                </div>
                 <div className={styles.headerColumn}>
                     <span className={styles.creator}>{props.title}</span>
                     <span className={styles.location}>

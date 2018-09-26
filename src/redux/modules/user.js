@@ -8,6 +8,7 @@ const SET_USER_LIST = "SET_USER_LIST";
 const FOLLOW_USER = "FOLLOW_USER";
 const UNFOLLOW_USER = "UNFOLLOW_USER";
 const SET_IMAGE_LIST = "SET_IMAGE_LIST";
+const SET_PROFILE = "SET_PROFILE";
 
 // actions creators
 function saveToken(token) {
@@ -50,10 +51,17 @@ function setUnfollowUser(userId) {
     }
 }
 
-function setImageList(imageList) {
+function setImageList(userList) {
     return {
         type: SET_IMAGE_LIST,
-        imageList
+        userList
+    }
+}
+
+function setProfile(userList) {
+    return {
+        type: SET_PROFILE,
+        userList
     }
 }
 
@@ -232,6 +240,15 @@ function getExplore() {
     };
 }
 
+function getProfile() {
+    return (dispatch, getState) => {
+        fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+            .then(response => response.json())
+            .then(json => dispatch(setProfile(json.data.movies)))
+            .catch(err => console.log(err))
+    };
+}
+
 function searchByTerm(searchTerm) {
     return async(dispatch, getState) => {
         const { user: { token } } = getState();
@@ -304,6 +321,8 @@ function reducer(state = initialState, action) {
             return applyUnfollowUser(state, action);
         case SET_IMAGE_LIST:
             return applySetImageList(state, action);
+        case SET_PROFILE:
+            return applySetProfile(state, action);
         default:
             return state;
     }
@@ -373,6 +392,14 @@ function applySetImageList(state, action) {
     }
 }
 
+function applySetProfile(state, action) {
+    const { userList } = action;
+    return {
+        ...state,
+        userList
+    }
+}
+
 // exports
 const actionCreators = {
     facebookLogin,
@@ -384,7 +411,8 @@ const actionCreators = {
     followUser,
     unfollowUser,
     getExplore,
-    searchByTerm
+    searchByTerm,
+    getProfile
 };
 export { actionCreators };
 
