@@ -16,6 +16,10 @@
     .column {
       display: flex;
       align-items: center;
+      a {
+        color: #000;
+        text-decoration: none;
+      }
       .user {
         margin-left: 10px;
         .username {

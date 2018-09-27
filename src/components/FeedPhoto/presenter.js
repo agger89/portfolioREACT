@@ -12,19 +12,19 @@ const FeedPhoto = (props, context) => {
     return (
         <div className={styles.feedPhoto}>
             <header className={styles.header}>
-                <div
-                    className={styles.image}
-                    style={{ backgroundImage: `url(${props.small_cover_image})` }}
-                >
-                    <Link to={`/profile/${props.id}`} params={{paramsId: props.id}} />
-                </div>
-                <div className={styles.headerColumn}>
-                    <span className={styles.creator}>{props.title}</span>
-                    <span className={styles.location}>
-                        {props.genres[0]}, {" "}
-                        {props.genres.slice(-1)[0]}
-                        </span>
-                </div>
+                <Link to={`/profile/${props.id}`}>
+                    <div
+                        className={styles.image}
+                        style={{ backgroundImage: `url(${props.small_cover_image})` }}
+                    />
+                    <div className={styles.headerColumn}>
+                        <span className={styles.creator}>{props.title}</span>
+                        <span className={styles.location}>
+                            {props.genres[0]}, {" "}
+                            {props.genres.slice(-1)[0]}
+                            </span>
+                    </div>
+                </Link>
             </header>
             <img
                 className={styles.feedImage}

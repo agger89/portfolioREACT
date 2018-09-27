@@ -22,7 +22,7 @@ const RenderFeed = props => (
     <div className={styles.feed}>
         {/* 원본 */}
         {/*{props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}*/}
-        {props.feed.map(photo => <FeedPhoto {...photo} />)}
+        {props.feed.map((photo, i) => <FeedPhoto {...photo} key={i}/>)}
     </div>
 );
 

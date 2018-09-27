@@ -5,8 +5,8 @@ import styles from "./styles.scss";
 const PhotoComments = props => (
     <div className={styles.comments}>
         <ul className={styles.list}>
-            {props.genres.map(comment => (
-                <Comment username={props.title} comment={comment} />
+            {props.genres.map((comment, i) => (
+                <Comment username={props.title} comment={comment} key={i}/>
             ))}
         </ul>
     </div>
