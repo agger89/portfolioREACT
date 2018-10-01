@@ -4,38 +4,29 @@ import Explore from "./presenter";
 
 class Container extends Component {
     state = {
-        loading: true
-    };
-    static propTypes = {
-        getExplore: PropTypes.func.isRequired,
-        userList: PropTypes.array
+        loading: true,
+        seeingPhoto: false,
+        target: ""
     };
     // 컴포넌트가 만들어지고 첫 렌더링을 다 마친 후 실행되는 메소드
     // ajax처리 등을 넣는다
     componentDidMount() {
         const { getExplore } = this.props;
-        if (!this.props.userList) {
-            getExplore();
+        getExplore();
+        const { getFeed } = this.props;
+        if (!this.props.feed) {
+            getFeed();
         } else {
             this.setState({
                 loading: false
             })
         }
     }
-    // 컴포넌트가 prop 을 새로 받았을 때 실행된다
-    // prop 에 따라 state 를 업데이트 해야 할 때 사용하면 유용하다
-    // componentWillReceiveProps = nextProps => {
-    //     if (nextProps.userList) {
-    //         this.setState({
-    //             loading: false
-    //         })
-    //     }
-    // };
 
     // 컴포넌트가 리렌더링을 마친 후 실행된다.
-    // 위에 componentWillReceiveProps는 버전 16.3에 사라짐
+    // 원래 componentWillReceiveProps를 사용했지만 버전 16.3 에서 사라짐
     componentDidUpdate = (prevProps, prevState) => {
-        if (!prevProps.userList && this.props.userList) {
+        if (!prevProps.feed && this.props.feed) {
             this.setState({
                 loading: false
             })
@@ -43,9 +34,30 @@ class Container extends Component {
     };
 
     render() {
+        const { feed } = this.props;
         const { userList } = this.props;
-        return <Explore {...this.state} userList={userList} />
+        return (
+            <Explore
+                {...this.state}
+                feed={feed}
+                userList={userList}
+                openPhoto={this._openPhoto}
+                closePhoto={this._closePhoto}
+            />
+        )
     }
+    _openPhoto = (e) => {
+        this.setState({
+            seeingPhoto: true,
+            target: e.target.id
+        })
+    };
+    _closePhoto = () => {
+        this.setState({
+            seeingPhoto: false,
+            target: ""
+        })
+    };
 }
 
 export default Container;

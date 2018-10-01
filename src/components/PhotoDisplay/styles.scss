@@ -21,8 +21,12 @@
       opacity: 1;
     }
     .overlay {
+      position: absolute;
       top: 0;
       left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: calc(100% - 28px);
       height: calc(100% - 28px);
       @include breakpoint("phone-landscape") {
@@ -30,12 +34,10 @@
         height: calc(100% - 3px);
       }
       background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       opacity: 0;
+      cursor: pointer;
       .data {
+        pointer-events: none;
         color: white;
         font-weight: 600;
         display: flex;

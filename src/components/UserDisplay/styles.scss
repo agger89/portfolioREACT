@@ -4,9 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-right: 28px;
   box-sizing: border-box;
-  border-bottom: 1px solid $light-grey;
   @include breakpoint("phone-tablet") {
     border-bottom: 0;
   }
@@ -42,6 +40,10 @@
       }
       .avatar {
         width: 30px;
+        height: 30px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 50%;
         border-radius: 50%;
       }
       .button {
@@ -55,11 +57,20 @@
   &:last-child {
     border: 0;
   }
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 16px;
+    .name {
+      font-size: 12px;
+    }
+  }
 }
 
 .vertical {
   width: 33.333%;
   height: 220px;
+  padding-right: 28px;
   &:last-child {
     margin-right: 0;
   }

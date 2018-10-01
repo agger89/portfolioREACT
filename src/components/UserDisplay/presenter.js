@@ -17,14 +17,14 @@ const UserDisplay = (props, context) => (
                 <Link to={`/profile/${props.user.id}`}>
                     <div className={styles.user}>
                         <span className={styles.username}>{props.user.title}</span>
-                        <span className={styles.name}>{props.user.title}</span>`
+                        <span className={styles.name}>{props.user.title}</span>
                     </div>
                 </Link>
             </div>
             <span className={styles.column}>
                  <button className={styles.button} onClick={props.handleClick}>
                      {props.user.following ? context.t("Unfollow") : context.t("Follow")}
-                 </button>`
+                 </button>
             </span>
         </div>
     </div>

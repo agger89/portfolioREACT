@@ -8,6 +8,8 @@ class Container extends Component {
     // 컴포넌트가 만들어지고 첫 렌더링을 다 마친 후 실행되는 메소드
     // ajax처리 등을 넣는다
     componentDidMount() {
+        const { getExplore } = this.props;
+        getExplore();
         const { getFeed } = this.props;
         if (!this.props.feed) {
             getFeed();
@@ -27,8 +29,9 @@ class Container extends Component {
         }
     };
     render() {
+        const { userList } = this.props;
         const { feed } = this.props;
-        return <Feed {...this.state} feed={feed} />
+        return <Feed {...this.state} feed={feed} userList={userList}/>
     }
 }
 

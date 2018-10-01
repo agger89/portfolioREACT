@@ -18,7 +18,7 @@ const PhotoActions = (props, context) => (
             </span>
         </div>
         <span className={styles.likes} onClick={props.openLikes}>
-            {props.number} {" "}
+            {props.rating} {" "}
             {/*{props.number === 1 ? context.t("like") : context.t("likes")}*/}
             {context.t("rating")}
         </span>
@@ -26,7 +26,7 @@ const PhotoActions = (props, context) => (
 );
 
 PhotoActions.protoTypes = {
-    number: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
     isLiked: PropTypes.bool.isRequired,
     photoId: PropTypes.number.isRequired,
     handleHeartClick: PropTypes.func.isRequired,

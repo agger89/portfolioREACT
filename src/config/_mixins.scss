@@ -26,6 +26,10 @@ $iphone6plus-width: 450px;
     @media (min-width: #{$phone-width}) and (max-width: #{$tablet-width}) {
       @content;
     }
+  } @else if $breakpoint == "desktop" {
+    @media (min-width: #{$desktop-width}) {
+      @content;
+    }
   } @else if $breakpoint == "desktop-xl" {
     @media (min-width: #{$xl-desktop-width}) {
       @content;

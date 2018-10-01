@@ -1,9 +1,6 @@
 .comment-box {
   border-top: 1px solid $light-grey;
-  padding: 15px;
-  @include breakpoint("phone") {
-    display: none;
-  }
+  padding: 15px 0;
   .input {
     border: 0;
     height: 20px;

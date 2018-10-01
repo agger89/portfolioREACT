@@ -11,8 +11,8 @@ const UserList = props => (
             <header className={styles.header}>
                 <h4 className={styles.title}>{props.title}</h4>
                 <span onClick={props.closeLikes}>
-          <Ionicon icon="md-close" fontSize="20px" color="black" />
-        </span>
+                    <Ionicon icon="md-close" fontSize="20px" color="black" />
+                </span>
             </header>
             <div className={styles.content}>
                 {props.loading ? <Loading /> : <RenderUsers list={props.userList} />}
@@ -21,10 +21,12 @@ const UserList = props => (
     </div>
 );
 
-const RenderUsers = props =>
+const RenderUsers = props => (
     props.list.map(user => (
+        user.rating > 7.5 &&
         <UserDisplay horizontal={true} user={user} key={user.id} />
-    ));
+    ))
+);
 
 RenderUsers.propTypes = {
     list: PropTypes.array

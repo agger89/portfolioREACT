@@ -9,12 +9,15 @@
   justify-content: center;
   align-items: flex-start;
   .box {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     @include boxBorder(no);
     width: 100%;
     max-width: $max-card-width;
     .header {
       display: flex;
-      padding: 14px 0;
+      padding: 14px 16px;
       justify-content: center;
       align-items: center;
       border-bottom: 2px solid $light-grey;
@@ -34,6 +37,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
   }
 }

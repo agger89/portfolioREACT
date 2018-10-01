@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const FeedPhoto = (props, context) => {
     return (
-        <div className={styles.feedPhoto}>
+        <div className={`${styles.feedPhoto} ${props.modal ? styles.modal : null}`}>
             <header className={styles.header}>
                 <Link to={`/profile/${props.id}`}>
                     <div
@@ -21,7 +21,7 @@ const FeedPhoto = (props, context) => {
                         <span className={styles.creator}>{props.title}</span>
                         <span className={styles.location}>
                             {props.genres[0]}, {" "}
-                            {props.genres.slice(-1)[0]}
+                            {props.genres[1]}
                             </span>
                     </div>
                 </Link>
@@ -32,25 +32,31 @@ const FeedPhoto = (props, context) => {
                 alt={props.title}
             />
             <div className={styles.meta}>
-                <PhotoActions
-                    number={props.rating}
-                    isLiked={props.is_liked}
-                    photoId={props.id}
-                    openLikes={props.openLikes}
-                    focusInput={props.focusInput}
-                />
-                <PhotoComments
-                    title={props.title}
-                    genres={props.genres}
-                />
-                <TimeStamp time={props.year} />
-                <CommentBox
-                    photoId={props.id}
-                    innerRef={props.innerRef}
-                />
+                <div className={styles.photoActions}>
+                    <PhotoActions
+                        rating={props.rating}
+                        isLiked={props.is_liked}
+                        photoId={props.id}
+                        openLikes={props.openLikes}
+                        focusInput={props.focusInput}
+                    />
+                </div>
+                <div className={styles.comments}>
+                    <PhotoComments
+                        title={props.title}
+                        genres={props.genres}
+                    />
+                </div>
+                <div className={styles.commentBox}>
+                    <TimeStamp time={props.year} />
+                    <CommentBox
+                        photoId={props.id}
+                        innerRef={props.innerRef}
+                    />
+                </div>
             </div>
             {props.seeingLikes && (
-                <UserList title={context.t("Likes")} closeLikes={props.closeLikes} />
+                <UserList title={context.t("Rating")} closeLikes={props.closeLikes} />
             )}
         </div>
     );
