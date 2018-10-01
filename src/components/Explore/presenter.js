@@ -49,16 +49,7 @@ const RenderExplore = props => {
                             photo.id == props.target &&
                             <FeedPhoto
                                 modal={true}
-                                genres={photo.genres}
-                                small_cover_image={photo.small_cover_image}
-                                large_cover_image={photo.large_cover_image}
-                                title={photo.title}
-                                id={photo.id}
-                                rating={photo.rating}
-                                is_liked={photo.is_liked}
-                                openLikes={photo.openLikes}
-                                focusInput={photo.focusInput}
-                                year={photo.year}
+                                {...photo}
                                 key={i}
                             />
                         )}

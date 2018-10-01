@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import Loading from "components/Loading";
 import PhotoDisplay from "components/PhotoDisplay";
+import FeedPhoto from "components/FeedPhoto";
 import { Link } from "react-router-dom";
 import Ionicon from "react-ionicons";
 import styles from "./styles.scss";
@@ -29,9 +30,30 @@ const RenderProfile = props => (
             )}
             <div className={styles.userPhoto}>
                 {props.userList.map((photo, i) =>
-                    <PhotoDisplay photo={photo} key={i}/>
+                    <PhotoDisplay
+                        photo={photo}
+                        openPhoto={props.openPhoto}
+                        key={i}
+                    />
                 )}
             </div>
+            {props.seeingPhoto && (
+                <div className={styles.feedPhotoWrap}>
+                    <span className={styles.icon} onClick={props.closePhoto}>
+                        <Ionicon icon="md-close" fontSize="24px" color="white" />
+                    </span>
+                    <div className={styles.feedBack}>
+                        {props.feed.map((photo, i) =>
+                            photo.id == props.target &&
+                            <FeedPhoto
+                                modal={true}
+                                {...photo}
+                                key={i}
+                            />
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     </div>
 );
