@@ -41,3 +41,24 @@
     }
   }
 }
+.modal.container {
+  position: static;
+  height: auto;
+  @include breakpoint("desktop") {
+    position: absolute;
+    right: 0;
+    left: inherit;
+    display: block;
+    width: calc(100% - 60%);
+    background-color: transparent;
+  }
+  .box {
+    position: static;
+    border: none;
+    transform: none;
+    .wrap {
+        height: calc(450px - 53px);
+        overflow-y: auto;
+    }
+  }
+}

@@ -28,8 +28,13 @@
       &:last-child {
         justify-content: flex-end;
       }
-      .logo {
-        max-width: 125px;
+      a {
+        text-decoration: none;
+        .logo {
+          font-family: -webkit-pictograph;
+          font-size: 32px;
+          color: #000;
+        }
       }
       .search-input {
         width: 215px;

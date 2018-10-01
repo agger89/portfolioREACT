@@ -31,7 +31,7 @@ const FeedPhoto = (props, context) => {
                 src={props.large_cover_image}
                 alt={props.title}
             />
-            <div className={styles.meta}>
+            <div className={`${styles.meta} ${props.seeingLikes ? styles.likes : null}`}>
                 <div className={styles.photoActions}>
                     <PhotoActions
                         rating={props.rating}
@@ -56,7 +56,7 @@ const FeedPhoto = (props, context) => {
                 </div>
             </div>
             {props.seeingLikes && (
-                <UserList title={context.t("Rating")} closeLikes={props.closeLikes} />
+                <UserList title={context.t("Rating")} closeLikes={props.closeLikes} modal={props.modal}/>
             )}
         </div>
     );
