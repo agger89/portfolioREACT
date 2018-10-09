@@ -8,6 +8,7 @@ import Footer from 'components/Footer';
 import Feed from "components/Feed";
 import Explore from "components/Explore";
 import Profile from "components/Profile";
+import Search from "components/Search";
 
 const App = props => [
     // props.isLoggedIn ? <Navigation key={1} /> : null,
@@ -26,7 +27,7 @@ const PrivateRoutes = props => (
         <Route exact path="/" component={Feed} />
         <Route exact path="/explore" component={Explore} />
         <Route exact path="/profile/:paramsId" component={Profile} />
-        <Route path="/search/:searchTerm" render={() => "search"} />
+        <Route path="/search/:searchTerm" component={Search} />
     </Switch>
 );
 

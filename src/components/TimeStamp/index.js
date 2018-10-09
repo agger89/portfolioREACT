@@ -7,6 +7,6 @@ const TimeStamp = (props, context) => (
 );
 
 TimeStamp.propTypes = {
-    time: PropTypes.string.isRequired
+    time: PropTypes.number.isRequired
 };
 export default TimeStamp;

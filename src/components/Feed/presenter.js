@@ -20,15 +20,17 @@ const LoadingFeed = props => (
 
 const RenderFeed = props => (
     <div className={styles.feed}>
-        {/* 원본 */}
-        {/*{props.feed.map(photo => <FeedPhoto {...photo} key={photo.id} />)}*/}
         {props.feed.map((photo, i) => <FeedPhoto {...photo} key={i}/>)}
     </div>
+    /* scrollEvent */
+    /*<div className={styles.feed} ref={props.myRef} style={{ height: "200px", overflow: "auto" }}>*/
+        /*{props.feed.map((photo, i) => <FeedPhoto {...photo} key={i}/>)}*/
+        /*{props.btmLoading ? <Loading /> : null}*/
+    /*</div>*/
 );
 
 Feed.propTypes = {
     loading: PropTypes.bool.isRequired,
-    comments: PropTypes.array.isRequired
 };
 
 export default Feed;

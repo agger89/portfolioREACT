@@ -38,6 +38,7 @@ class Container extends Component {
     };
     render() {
         const { userList, imageList } = this.props;
+        console.log("userList ", userList);
         return (
             <Explore {...this.state} userList={userList} imageList={imageList} />
         );

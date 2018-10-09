@@ -3,12 +3,19 @@ import { actionCreators as userActions } from "redux/modules/user";
 
 // actions
 const SET_FEED = "SET_FEED";
+const SET_FEED_MORE = "SET_FEED_MORE";
 const LIKE_PHOTO = "LIKE_PHOTO";
 const UNLIKE_PHOTO = "UNLIKE_PHOTO";
 const ADD_COMMENT = "ADD_COMMENT";
 
 // action creators
 function setFeed(feed) {
+    return {
+        type: SET_FEED,
+        feed
+    }
+}
+function setFeedMore(feed) {
     return {
         type: SET_FEED,
         feed
@@ -39,7 +46,6 @@ function addComment(photoId, comment) {
 
 
 // api actions
-
 // 원본 getFeed
 // function getFeed() {
 //     return (dispatch, getState) => {
@@ -67,6 +73,16 @@ function getFeed() {
             .catch(err => console.log(err))
     };
 }
+
+// scroll
+// function getFeedMore() {
+//     return (dispatch, getState) => {
+//         fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count&limit=3")
+//             .then(response => response.json())
+//             .then(json => dispatch(setFeedMore(json.data.movies)))
+//             .catch(err => console.log(err))
+//     };
+// }
 
 // 원본 likePhoto
 // function likePhoto(photoId) {
@@ -156,6 +172,8 @@ function reducer(state = initialState, action) {
     switch (action.type) {
         case SET_FEED:
             return applySetFeed(state, action);
+        case SET_FEED_MORE:
+            return applySetFeed(state, action);
         case LIKE_PHOTO:
             return applyLikePhoto(state, action);
         case UNLIKE_PHOTO:
@@ -235,7 +253,9 @@ const actionCreators = {
     getFeed,
     likePhoto,
     unlikePhoto,
-    commentPhoto
+    commentPhoto,
+    // scroll
+    // getFeedMore
 };
 
 export { actionCreators };

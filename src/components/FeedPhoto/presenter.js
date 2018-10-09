@@ -102,7 +102,7 @@ FeedPhoto.propTypes = {
     genres: PropTypes.array.isRequired,
     small_cover_image: PropTypes.string,
     large_cover_image: PropTypes.string,
-    year: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
 };
 
