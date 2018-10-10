@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import styles from "./styles.scss";
 
 const UserDisplay = (props, context) => (
-    <div className={props.horizontal ? styles.horizontal : styles.vertical}>
+    <div
+        className={`${props.horizontal ? styles.horizontal : styles.vertical} ${props.modal ? styles.modal : ""}`}
+    >
         <div className={styles.wrap}>
-            <div className={styles.column}>
+            <div className={styles.column} onClick={props.closeStatus}>
                 <Link to={`/profile/${props.user.id}`}>
                     <div
                         style={{ backgroundImage: `url(${props.user.medium_cover_image || require("images/noPhoto.jpg")})` }}
@@ -32,20 +34,6 @@ const UserDisplay = (props, context) => (
 
 UserDisplay.contextTypes = {
     t: PropTypes.func.isRequired
-};
-
-UserDisplay.propTypes = {
-    user: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        profile_image: PropTypes.string,
-        username: PropTypes.string.isRequired,
-        name: PropTypes.string,
-        following: PropTypes.bool.isRequired
-    }).isRequired,
-    big: PropTypes.bool,
-    handleClick: PropTypes.func.isRequired,
-    horizontal: PropTypes.bool,
-    vertical: PropTypes.bool
 };
 
 export default UserDisplay;

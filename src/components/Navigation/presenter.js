@@ -3,9 +3,11 @@ import Ionicon from "react-ionicons";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./styles.scss";
+import UserDisplay from "components/UserDisplay";
+import Loading from "components/Loading";
 
 const Navigation = (props, context) => (
-    <div className={styles.navigation}>
+    <div className={`${styles.navigation} ${props.navTop ? styles.navTop : ""}`} ref={props.navRef}>
         <div className={styles.inner}>
             <div className={styles.column}>
                 <Link to="/">
@@ -34,7 +36,7 @@ const Navigation = (props, context) => (
                         <Ionicon icon="ios-compass-outline" fontSize="28px" color="black" />
                     </Link>
                 </div>
-                <div className={styles.navIcon}>
+                <div className={styles.navIcon} onClick={props.openStatus}>
                     <Ionicon icon="ios-heart-outline" fontSize="28px" color="black" />
                 </div>
                 {/*<div className={styles.navIcon}>*/}
@@ -42,9 +44,21 @@ const Navigation = (props, context) => (
                         {/*<Ionicon icon="ios-person-outline" fontSize="32px" color="black" />*/}
                     {/*</Link>*/}
                 {/*</div>*/}
+                {props.seeingStatus && (
+                <div className={styles.status} >
+                    {props.loading ? <Loading /> : <RenderUsers users={props.userList} closeStatus={props.closeStatus}/>}
+                    <div className={styles.wrap} onClick={props.closeStatus}/>
+                </div>
+                )}
             </div>
         </div>
     </div>
+);
+
+const RenderUsers = props => (
+    props.users.map(user => (
+        <UserDisplay user={user} key={user.id} modal={true} closeStatus={props.closeStatus}/>
+    ))
 );
 
 Navigation.contextTypes = {

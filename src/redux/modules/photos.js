@@ -67,7 +67,7 @@ function addComment(photoId, comment) {
 // }
 function getFeed() {
     return (dispatch, getState) => {
-        fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+        fetch("https://864e95c5-5881-4af9-be86-bcb29da11a9e.mock.pstmn.io/api/v2/list_movies.json?sort_by=download_count")
             .then(response => response.json())
             .then(json => dispatch(setFeed(json.data.movies)))
             .catch(err => console.log(err))

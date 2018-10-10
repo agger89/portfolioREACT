@@ -160,7 +160,7 @@ function createAccount(username, password, email, name) {
 
 function getPhotoLikes(photoId) {
     return (dispatch, getState) => {
-        fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+        fetch("https://864e95c5-5881-4af9-be86-bcb29da11a9e.mock.pstmn.io/api/v2/list_movies.json?sort_by=download_count")
             .then(response => response.json())
             .then(json => dispatch(setUserList(json.data.movies)))
             .catch(err => console.log(err))
@@ -243,7 +243,7 @@ function unfollowUser(userId) {
 
 function getExplore() {
     return (dispatch, getState) => {
-        fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+        fetch("https://864e95c5-5881-4af9-be86-bcb29da11a9e.mock.pstmn.io/api/v2/list_movies.json?sort_by=download_count")
             .then(response => response.json())
             .then(json => dispatch(setUserList(json.data.movies)))
             .catch(err => console.log(err))
@@ -252,7 +252,7 @@ function getExplore() {
 
 function getProfile() {
     return (dispatch, getState) => {
-        fetch("https://yts.am/api/v2/list_movies.json?sort_by=download_count")
+        fetch("https://864e95c5-5881-4af9-be86-bcb29da11a9e.mock.pstmn.io/api/v2/list_movies.json?sort_by=download_count")
             .then(response => response.json())
             .then(json => dispatch(setProfile(json.data.movies)))
             .catch(err => console.log(err))
@@ -273,14 +273,14 @@ function getProfile() {
 //     }
 // }
 
-function searchByTerm(searchTerm) {
-    return async(dispatch, getState) => {
-        const userList = await searchUsers(searchTerm);
-        const imageList = await searchImages(searchTerm);
-        dispatch(setUserList(userList));
-        dispatch(setImageList(imageList));
-    }
-}
+// function searchByTerm(searchTerm) {
+//     return async(dispatch, getState) => {
+//         const userList = await searchUsers(searchTerm);
+//         const imageList = await searchImages(searchTerm);
+//         dispatch(setUserList(userList));
+//         dispatch(setImageList(imageList));
+//     }
+// }
 
 // 원본 searchUsers
 // function searchUsers(token, searchTerm) {
@@ -443,7 +443,7 @@ const actionCreators = {
     followUser,
     unfollowUser,
     getExplore,
-    searchByTerm,
+    // searchByTerm,
     getProfile
 };
 export { actionCreators };

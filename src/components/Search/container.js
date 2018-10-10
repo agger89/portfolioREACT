@@ -16,26 +16,20 @@ class Container extends Component {
         searchByTerm();
     }
     componentDidUpdate(prevProps, prevState) {
-        const { searchByTerm } = this.props;
+        const { searchByTerm, pathname } = this.props;
         if (prevProps.match.params !== this.props.match.params) {
             searchByTerm();
         }
-    }
-
-    componentWillReceiveProps = nextProps => {
-        const { searchByTerm, pathname } = this.props;
-        if (nextProps.userList && nextProps.imageList) {
+        if (prevProps.userList && this.props.imageList) {
             this.setState({
                 loading: false
             });
         }
-        // if (nextProps.match = == this.props.match) {
-        //   searchByTerm();
-        // }
-        if (nextProps.pathname !== pathname) {
+        if (prevProps.pathname !== pathname) {
             searchByTerm();
         }
-    };
+    }
+
     render() {
         const { userList, imageList } = this.props;
         console.log("userList ", userList);

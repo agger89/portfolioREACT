@@ -10,6 +10,7 @@
 .profile {
   display: flex;
   justify-content: center;
+  padding-top: $common-padding-top;
   background-color: #fafafa;
   .inner {
     position: relative;
@@ -157,6 +158,7 @@
     left: 0;
     background: rgba(0,0,0,.7);
     overflow-y: auto;
+    z-index: 1;
     .icon {
       position: absolute;
       top: 14px;

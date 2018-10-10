@@ -5,6 +5,7 @@
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  z-index: 1;
   @include breakpoint("phone-tablet") {
     border-bottom: 0;
   }
@@ -98,5 +99,40 @@
       margin-top: 15px;
       min-width: 95px;
     }
+  }
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 12px 16px 13px;
+  .wrap {
+    justify-content: space-between;
+    flex-direction: row;
+    border: none;
+    .column {
+      flex-direction: row;
+      .avatar {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 0;
+      }
+      .user {
+        margin-left: 10px;
+      }
+      .button {
+        margin-top: 0;
+      }
+    }
+  }
+  :after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    bottom: 0;
+    left: 16px;
+    display: block;
+    border-bottom: 1px solid #efefef;
   }
 }
