@@ -19,17 +19,17 @@ const Navigation = (props, context) => (
                     <span className={styles.logo}>Portfolio</span>
                 </Link>
             </div>
-            <div className={styles.column}>
-                <form onSubmit={props.onSubmit}>
-                    <input
-                        type="text"
-                        placeholder={context.t("Search")}
-                        className={styles.searchInput}
-                        value={props.value}
-                        onChange={props.onInputChange}
-                    />
-                </form>
-            </div>
+            {/*<div className={styles.column}>*/}
+                {/*<form onSubmit={props.onSubmit}>*/}
+                    {/*<input*/}
+                        {/*type="text"*/}
+                        {/*placeholder={context.t("Search")}*/}
+                        {/*className={styles.searchInput}*/}
+                        {/*value={props.value}*/}
+                        {/*onChange={props.onInputChange}*/}
+                    {/*/>*/}
+                {/*</form>*/}
+            {/*</div>*/}
             <div className={styles.column}>
                 <div className={styles.navIcon}>
                     <Link to="/explore">

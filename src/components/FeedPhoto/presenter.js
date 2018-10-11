@@ -28,9 +28,11 @@ const FeedPhoto = (props, context) => {
             </header>
             <img
                 className={styles.feedImage}
-                src={props.large_cover_image}
+                // src={props.large_cover_image ? props.large_cover_image : require("images/no-image.png")}
+                src={require("images/no-image.png")}
                 alt={props.title}
             />
+            {/*style={{ backgroundImage: `url(${props.user.medium_cover_image || require("images/noPhoto.jpg")})` }}*/}
             <div className={`${styles.meta} ${props.seeingLikes ? styles.likes : null}`}>
                 <div className={styles.photoActions}>
                     <PhotoActions
