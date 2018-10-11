@@ -42,8 +42,18 @@
       }
     }
   }
-  .feed-image {
-    width: 100%;
+  .image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 343px;
+    background-color: #c5ccdf;
+    .feed-image {
+      width: 100%;
+    }
+    .no-image {
+      width: auto;
+    }
   }
   .meta {
     padding: 15px;
@@ -71,12 +81,15 @@
         padding: 0;
         border-bottom: 1px solid #efefef;
       }
-      .feed-image {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 60%;
-        max-width: 600px;
+      .imageWrap {
+        background-color: #fff;
+        .feed-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 60%;
+          max-width: 600px;
+        }
       }
       .meta {
         position: absolute;

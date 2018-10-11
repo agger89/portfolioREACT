@@ -10,11 +10,11 @@ $iphone6plus-width: 450px;
     @media (min-width: #{$iphone6plus-width}) and (max-width: #{$desktop-width}) {
       @content;
     }
-  } @else if $breakpoint == "tablet-landscape" {
+  } @else if $breakpoint == "tablet-landscape" { // 가로 모드 ( 뷰포트의 높이가 너비에 비해 상대적으로 크면 실행 )
     @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) and (orientation: landscape) {
       @content;
     }
-  } @else if $breakpoint == "table-portrait" {
+  } @else if $breakpoint == "table-portrait" { // 세로 모드 ( 뷰포트의 너비가 높이에 비해 상대적으로 크면 실행 )
     @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width}) and (orientation: portrait) {
       @content;
     }

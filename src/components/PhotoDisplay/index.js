@@ -7,8 +7,8 @@ const PhotoDisplay = props => (
     <div className={styles.containerWrap}>
         <div className={styles.container}>
             <div
-                className={styles.photo}
-                style={{ backgroundImage: `url(${props.photo.large_cover_image})` }}
+                className={`${styles.photo} ${props.large_cover_image ? styles.noImage : ""}`}
+                style={{ backgroundImage: `url(${props.photo.large_cover_image || require("images/no-img.png")})` }}
             />
             <div className={styles.overlay} onClick={props.openPhoto} id={props.photo.id}>
                 <span className={styles.data}>

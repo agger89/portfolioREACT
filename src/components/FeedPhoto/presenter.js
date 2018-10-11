@@ -15,7 +15,7 @@ const FeedPhoto = (props, context) => {
                 <Link to={`/profile/${props.id}`}>
                     <div
                         className={styles.image}
-                        style={{ backgroundImage: `url(${props.small_cover_image})` }}
+                        style={{ backgroundImage: `url(${props.small_cover_image  || require("images/noPhoto.jpg")})` }}
                     />
                     <div className={styles.headerColumn}>
                         <span className={styles.creator}>{props.title}</span>
@@ -26,13 +26,13 @@ const FeedPhoto = (props, context) => {
                     </div>
                 </Link>
             </header>
-            <img
-                className={styles.feedImage}
-                // src={props.large_cover_image ? props.large_cover_image : require("images/no-image.png")}
-                src={require("images/no-image.png")}
-                alt={props.title}
-            />
-            {/*style={{ backgroundImage: `url(${props.user.medium_cover_image || require("images/noPhoto.jpg")})` }}*/}
+            <div className={styles.imageWrap}>
+                <img
+                    className={props.large_cover_image ? styles.feedImage : styles.noImage}
+                    src={props.large_cover_image ? props.large_cover_image : require("images/no-img.png")}
+                    alt={props.title}
+                />
+            </div>
             <div className={`${styles.meta} ${props.seeingLikes ? styles.likes : null}`}>
                 <div className={styles.photoActions}>
                     <PhotoActions
