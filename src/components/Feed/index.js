@@ -19,9 +19,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         getExplore: () => {
             dispatch(userActions.getExplore());
         },
-        // getFeedMore: () => {
-        //     dispatch(photoActions.getFeedMore());
-        // },
     };
 };
 

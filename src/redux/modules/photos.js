@@ -67,7 +67,7 @@ function addComment(photoId, comment) {
 // }
 function getFeed() {
     return (dispatch, getState) => {
-        fetch("data.json")
+        fetch("/data.json")
             .then(response => response.json())
             .then(json => dispatch(setFeed(json.data.movies)))
             .catch(err => console.log(err))
