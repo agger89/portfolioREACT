@@ -6,7 +6,7 @@ import { actionCreators as userActions } from "redux/modules/user";
 const mapStateToProps = (state, ownProps) => {
     const { user: { userList } } = state;
     return {
-        userList
+        userList,
     };
 };
 

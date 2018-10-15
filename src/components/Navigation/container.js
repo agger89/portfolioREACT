@@ -22,8 +22,6 @@ class Container extends Component {
         // navScroll
         if (prevState.loading && !this.state.loading) {
             window.addEventListener("scroll", () => {
-                console.log(window.scrollY);
-                console.log(this.div.clientHeight);
                 if (window.scrollY >= this.div.clientHeight) {
                     this.setState({
                         navTop: true
@@ -87,7 +85,6 @@ class Container extends Component {
         }
     };
     _closeStatus = () => {
-        console.log(1)
         this.setState({
             seeingStatus: false,
         });

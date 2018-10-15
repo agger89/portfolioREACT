@@ -68,35 +68,35 @@
   background-color: #fff;
   @include breakpoint("desktop") {
       position: relative;
-      max-width: $max-page-width;
+      max-width: 700px;
       min-height: 450px;
       max-height: 600px;
       border: 0;
       overflow: hidden;
       .header {
         position: absolute;
-        left: calc(60% + 15px);
-        width: calc(100% - 60% - 30px);
+        left: calc(300px + 20px);
+        width: calc(100% - 300px - 40px);
         height: 78px;
         padding: 0;
         border-bottom: 1px solid #efefef;
       }
-      .imageWrap {
+      .image-wrap {
         background-color: #fff;
         .feed-image {
           position: absolute;
           top: 0;
           left: 0;
-          width: 60%;
-          max-width: 600px;
+          height: 100%;
+          width: auto;
         }
       }
       .meta {
         position: absolute;
         top: 93px;
         bottom: 0;
-        left: calc(60% + 15px);
-        width: calc(100% - 60% - 30px);
+        left: calc(300px + 20px);
+        width: calc(100% - 300px - 40px);
         padding: 0;
         .photo-actions {
           position: absolute;

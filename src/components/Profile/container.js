@@ -37,7 +37,6 @@ class Container extends Component {
         const { userList } = this.props;
         const { location } = this.props;
         const { feed } = this.props;
-        console.log("payloadddddd ", location.pathname.slice(9));
         return (
             <Profile
                 {...this.state}
