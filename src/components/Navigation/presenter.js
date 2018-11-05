@@ -1,7 +1,7 @@
 import React from "react";
 import Ionicon from "react-ionicons";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./styles.scss";
 import UserDisplay from "components/UserDisplay";
 import Loading from "components/Loading";
@@ -32,9 +32,10 @@ const Navigation = (props, context) => (
             {/*</div>*/}
             <div className={styles.column}>
                 <div className={styles.navIcon}>
-                    <Link to="/explore">
-                        <Ionicon icon="ios-compass-outline" fontSize="28px" color="black" />
-                    </Link>
+                    <NavLink to="/explore" activeClassName="active">
+                        {/*<Ionicon icon="ios-compass-outline" fontSize="28px" color="black" />*/}
+                        explore
+                    </NavLink>
                 </div>
                 <div className={styles.navIcon} onClick={props.openStatus}>
                     <Ionicon icon="ios-heart-outline" fontSize="28px" color="black" />
